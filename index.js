@@ -11,7 +11,7 @@ app.engine("jsx", require("express-react-views").createEngine());
 
 const PORT = 3000
 
-const shoestore = ['shoes', 'shoe cleaner', 'shirt', 'hoodie', 'sweats'];
+const shoestore = ['shoes', 'shoe cleaner', 'shirt', 'hoodie', 'sweats', 'headband', 'hat', 'socks', 'wristbands', 'shades'];
 
 //--------Creating Routes based on Path/Rest Routes
 
@@ -33,6 +33,12 @@ app.get('/about', (req, res) =>{
 
 app.get('/:indexOfShoeStoreArray', (req, res) => {
     res.send(shoestore[req.params.indexOfShoeStoreArray])
+})
+
+app.get('/person/:firstname', (req, res) =>{
+    console.log('REQ PARAMS: ', req.params)
+    console.log('REQ QUERY: ', req.query)
+    res.send(`Hola ${req.query.title} ${req.params.firstname}`)
 })
 
 //req stands for 'Request', res stands for 'Response'
